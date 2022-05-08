@@ -1,312 +1,148 @@
+function Post(props) {
+    return (
+        <div class="post">
+            <div class="barra-superior">
+                <div class="perfil">
+                    <img src={props.sourceImgPerfil} alt="" />
+                    <h3>{props.titlePerfil}</h3>
+                </div>
+                <div class="mais-info">
+                    <ion-icon name="ellipsis-horizontal"></ion-icon>
+                </div>
+            </div>
+            <div class="foto">
+                <img src={props.sourceImgPublicada} alt="" />
+            </div>
+            <div class="icones-reagir">
+                <div>
+                    <ion-icon name="heart-outline" class="icone"></ion-icon>
+                    <ion-icon name="chatbubble-outline" class="icone"></ion-icon>
+                    <ion-icon name="paper-plane-outline" class="icone"></ion-icon>
+                </div>
+                <div>
+                    <ion-icon name="bookmark-outline" class="icone margin-direita"></ion-icon>
+                </div>
+            </div>
+            <div class="curtidas">
+                <img src={props.sourceImgPerfilQCurtiu} alt="" />
+                <p>Curtido por <strong>{props.titlePerfilQCurtiu}</strong> e <strong>outras {props.quantCurtidas} pessoas</strong></p>
+            </div>
+            <div class="comentarios">
+                <div class="lengenda">
+                    <p><strong>{props.titlePerfil}</strong> {props.legenda}</p>
+                </div>
+                <div class="quant-comentarios">
+                    <p><a href="#">Ver todos os {props.quantComentarios} comentários</a></p>
+                </div>
+                <div class="comentario">
+                    <p><strong>{props.titlePerfilComentou1}</strong> {props.comentario1}</p>
+                    <div>
+                        <ion-icon name="heart-outline" class="icone"></ion-icon>
+                    </div>
+                </div>
+                <div class="comentario">
+                    <p><strong>{props.titlePerfilComentou2}</strong> {props.comentario2}</p>
+                    <div>
+                        <ion-icon name="heart-outline" class="icone"></ion-icon>
+                    </div>
+                </div>
+                <div class="hora-publicacao">
+                    <p>HÁ {props.dataPublicacao}</p>
+                </div>
+                <div class="adicionar-comentario">
+                    <div>
+                        <ion-icon name="happy-outline" class="icone"></ion-icon>
+                    </div>
+                    <input type="text" name="comentario" id="comentario" placeholder="Adicione um comentário..." />
+                    <button>Publicar</button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export default function Feed() {
+    const feed = [
+        {
+            sourceImgPerfil: "images/perfil-dog-1.jpg", 
+            titlePerfil: "Marnie", 
+            sourceImgPublicada: "images/post-1.jpg", 
+            sourceImgPerfilQCurtiu: "images/perfil-gato-2.jpg", 
+            titlePerfilQCurtiu: "Britney", 
+            quantCurtidas: "68.140", 
+            legenda: "Lorem ipsum dolor sit", 
+            quantComentarios: "16.991", 
+            titlePerfilComentou1: "Heidi", 
+            comentario1: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur",
+            titlePerfilComentou2: "Cocker",
+            comentario2: "Duis neque urna, venenatis id placerat vel, pharetra scelerisque quam. Sed sagittis tortor vestibulum ultricies blandit",
+            dataPublicacao: "9 HORAS"
+        },
+        {
+            sourceImgPerfil: "images/perfil-gato-1.jpg", 
+            titlePerfil: "Heidi", 
+            sourceImgPublicada: "images/post-2.jpg", 
+            sourceImgPerfilQCurtiu: "images/perfil-gato-4.jpg", 
+            titlePerfilQCurtiu: "Hamilton", 
+            quantCurtidas: "85.106", 
+            legenda: "Lorem ipsum dolor sit", 
+            quantComentarios: "10.959", 
+            titlePerfilComentou1: "Hamilton", 
+            comentario1: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur",
+            titlePerfilComentou2: "Cocker",
+            comentario2: "Duis neque urna, venenatis id placerat vel, pharetra scelerisque quam. Sed sagittis tortor vestibulum ultricies blandit",
+            dataPublicacao: "4 HORAS"
+        },
+        {
+            sourceImgPerfil: "images/perfil-gato-3.jpg", 
+            titlePerfil: "Moka", 
+            sourceImgPublicada: "images/post-3.jpg", 
+            sourceImgPerfilQCurtiu: "images/perfil-dog-1.jpg", 
+            titlePerfilQCurtiu: "Britney", 
+            quantCurtidas: "96.887", 
+            legenda: "Lorem ipsum dolor sit", 
+            quantComentarios: "19.219", 
+            titlePerfilComentou1: "Britney", 
+            comentario1: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur",
+            titlePerfilComentou2: "Hamilton",
+            comentario2: "Duis neque urna, venenatis id placerat vel, pharetra scelerisque quam. Sed sagittis tortor vestibulum ultricies blandit",
+            dataPublicacao: "1 DIA"
+        },
+        {
+            sourceImgPerfil: "images/perfil-dog-3.webp", 
+            titlePerfil: "Cocker", 
+            sourceImgPublicada: "images/post-4.jpg", 
+            sourceImgPerfilQCurtiu: "images/perfil-dog-2.jpg", 
+            titlePerfilQCurtiu: "Oshie", 
+            quantCurtidas: "53.605", 
+            legenda: "Lorem ipsum dolor sit", 
+            quantComentarios: "19.805", 
+            titlePerfilComentou1: "Malu", 
+            comentario1: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur",
+            titlePerfilComentou2: "Oshie",
+            comentario2: "Duis neque urna, venenatis id placerat vel, pharetra scelerisque quam. Sed sagittis tortor vestibulum ultricies blandit",
+            dataPublicacao: "9 HORAS"
+        },
+        {
+            sourceImgPerfil: "images/perfil-dog-4.jpg", 
+            titlePerfil: "Malu", 
+            sourceImgPublicada: "images/post-5.jpg", 
+            sourceImgPerfilQCurtiu: "images/perfil-gato-3.jpg", 
+            titlePerfilQCurtiu: "Moka", 
+            quantCurtidas: "60.878", 
+            legenda: "Lorem ipsum dolor sit", 
+            quantComentarios: "29.520", 
+            titlePerfilComentou1: "Marnie", 
+            comentario1: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur",
+            titlePerfilComentou2: "Malu",
+            comentario2: "Duis neque urna, venenatis id placerat vel, pharetra scelerisque quam. Sed sagittis tortor vestibulum ultricies blandit",
+            dataPublicacao: "1 DIA"
+        }
+    ]
+
     return (
         <div class="feed">
-            <div class="post">
-                <div class="barra-superior">
-                    <div class="perfil">
-                        <img src="images/perfil-dog-1.jpg" alt="" />
-                            <h3>Marnie</h3>
-                    </div>
-                    <div class="mais-info">
-                        <ion-icon name="ellipsis-horizontal"></ion-icon>
-                    </div>
-                </div>
-                <div class="foto">
-                    <img src="images/post-1.jpg" alt="" />
-                </div>
-                <div class="icones-reagir">
-                    <div>
-                        <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        <ion-icon name="chatbubble-outline" class="icone"></ion-icon>
-                        <ion-icon name="paper-plane-outline" class="icone"></ion-icon>
-                    </div>
-                    <div>
-                        <ion-icon name="bookmark-outline" class="icone margin-direita"></ion-icon>
-                    </div>
-                </div>
-                <div class="curtidas">
-                    <img src="images/perfil-gato-2.jpg" alt="" />
-                        <p>Curtido por <strong>Britney</strong> e <strong>outras 68.140 pessoas</strong></p>
-                </div>
-                <div class="comentarios">
-                    <div class="lengenda">
-                        <p><strong>Marnie</strong> Lorem ipsum dolor sit</p>
-                    </div>
-                    <div class="quant-comentarios">
-                        <p><a href="#">Ver todos os 16.991 comentários</a></p>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Heidi</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur... <a href="#">mais</a></p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Cocker</strong> Duis neque urna, venenatis id placerat vel, pharetra scelerisque quam. Sed sagittis tortor vestibulum ultricies blandit... <a href="#">mais</a></p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="hora-publicacao">
-                        <p>HÁ 9 HORAS</p>
-                    </div>
-                    <div class="adicionar-comentario">
-                        <div>
-                            <ion-icon name="happy-outline" class="icone"></ion-icon>
-                        </div>
-                        <input type="text" name="comentario" id="comentario" placeholder="Adicione um comentário..." />
-                            <button>Publicar</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="barra-superior">
-                    <div class="perfil">
-                        <img src="images/perfil-gato-1.jpg" alt="" />
-                            <h3>Heidi</h3>
-                    </div>
-                    <div class="mais-info">
-                        <ion-icon name="ellipsis-horizontal"></ion-icon>
-                    </div>
-                </div>
-                <div class="foto">
-                    <img src="images/post-2.jpg" alt="" />
-                </div>
-                <div class="icones-reagir">
-                    <div>
-                        <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        <ion-icon name="chatbubble-outline" class="icone"></ion-icon>
-                        <ion-icon name="paper-plane-outline" class="icone"></ion-icon>
-                    </div>
-                    <div>
-                        <ion-icon name="bookmark-outline" class="icone margin-direita"></ion-icon>
-                    </div>
-                </div>
-                <div class="curtidas">
-                    <img src="images/perfil-gato-4.jpg" alt="" />
-                    <p>Curtido por <strong>Hamilton</strong> e <strong>outras 85.106 pessoas</strong></p>
-                </div>
-                <div class="comentarios">
-                    <div class="lengenda">
-                        <p><strong>Heidi</strong> Lorem ipsum dolor sit</p>
-                    </div>
-                    <div class="quant-comentarios">
-                        <p><a href="#">Ver todos os 10.959 comentários</a></p>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Hamilton</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur... <a href="#">mais</a></p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Cocker</strong> Duis neque urna, venenatis id placerat vel, pharetra scelerisque quam. Sed sagittis tortor vestibulum ultricies blandit... <a href="#">mais</a></p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="hora-publicacao">
-                        <p>HÁ 4 HORAS</p>
-                    </div>
-                    <div class="adicionar-comentario">
-                        <div>
-                            <ion-icon name="happy-outline" class="icone"></ion-icon>
-                        </div>
-                        <input type="text" name="comentario" id="comentario" placeholder="Adicione um comentário..." />
-                            <button>Publicar</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="barra-superior">
-                    <div class="perfil">
-                        <img src="images/perfil-gato-3.jpg" alt="" />
-                            <h3>Moka</h3>
-                    </div>
-                    <div class="mais-info">
-                        <ion-icon name="ellipsis-horizontal"></ion-icon>
-                    </div>
-                </div>
-                <div class="foto">
-                    <img src="images/post-3.jpg" alt="" />
-                </div>
-                <div class="icones-reagir">
-                    <div>
-                        <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        <ion-icon name="chatbubble-outline" class="icone"></ion-icon>
-                        <ion-icon name="paper-plane-outline" class="icone"></ion-icon>
-                    </div>
-                    <div>
-                        <ion-icon name="bookmark-outline" class="icone margin-direita"></ion-icon>
-                    </div>
-                </div>
-                <div class="curtidas">
-                    <img src="images/perfil-dog-1.jpg" alt="" />
-                        <p>Curtido por <strong>Britney</strong> e <strong>outras 96.887 pessoas</strong></p>
-                </div>
-                <div class="comentarios">
-                    <div class="lengenda">
-                        <p><strong>Moka</strong> Lorem ipsum dolor sit</p>
-                    </div>
-                    <div class="quant-comentarios">
-                        <p><a href="#">Ver todos os 19.219 comentários</a></p>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Britney</strong> Nulla at nisi diam</p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Hamilton</strong> Fusce eu elementum purus.</p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Malu</strong> Cras condimentum risus mollis, dignissim felis vel, posuere tortor. Aenean bibendum... <a href="#">mais</a> </p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="hora-publicacao">
-                        <p>HÁ 1 DIA</p>
-                    </div>
-                    <div class="adicionar-comentario">
-                        <div>
-                            <ion-icon name="happy-outline" class="icone"></ion-icon>
-                        </div>
-                        <input type="text" name="comentario" id="comentario" placeholder="Adicione um comentário..." />
-                            <button>Publicar</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="barra-superior">
-                    <div class="perfil">
-                        <img src="images/perfil-dog-3.webp" alt="" />
-                            <h3>Cocker</h3>
-                    </div>
-                    <div class="mais-info">
-                        <ion-icon name="ellipsis-horizontal"></ion-icon>
-                    </div>
-                </div>
-                <div class="foto">
-                    <img src="images/post-4.jpg" alt="" />
-                </div>
-                <div class="icones-reagir">
-                    <div>
-                        <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        <ion-icon name="chatbubble-outline" class="icone"></ion-icon>
-                        <ion-icon name="paper-plane-outline" class="icone"></ion-icon>
-                    </div>
-                    <div>
-                        <ion-icon name="bookmark-outline" class="icone margin-direita"></ion-icon>
-                    </div>
-                </div>
-                <div class="curtidas">
-                    <img src="images/perfil-dog-2.jpg" alt="" />
-                        <p>Curtido por <strong>Oshie</strong> e <strong>outras 53.605 pessoas</strong></p>
-                </div>
-                <div class="comentarios">
-                    <div class="lengenda">
-                        <p><strong>Cocker</strong> Lorem ipsum dolor sit</p>
-                    </div>
-                    <div class="quant-comentarios">
-                        <p><a href="#">Ver todos os 19.805 comentários</a></p>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Oshie</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur... <a href="#">mais</a></p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Malu</strong> Duis neque urna, venenatis id placerat vel, pharetra scelerisque quam. Sed sagittis tortor vestibulum ultricies blandit... <a href="#">mais</a></p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="hora-publicacao">
-                        <p>HÁ 9 HORAS</p>
-                    </div>
-                    <div class="adicionar-comentario">
-                        <div>
-                            <ion-icon name="happy-outline" class="icone"></ion-icon>
-                        </div>
-                        <input type="text" name="comentario" id="comentario" placeholder="Adicione um comentário..." />
-                            <button>Publicar</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="barra-superior">
-                    <div class="perfil">
-                        <img src="images/perfil-dog-4.jpg" alt="" />
-                            <h3>Malu</h3>
-                    </div>
-                    <div class="mais-info">
-                        <ion-icon name="ellipsis-horizontal"></ion-icon>
-                    </div>
-                </div>
-                <div class="foto">
-                    <img src="images/post-5.jpg" alt="" />
-                </div>
-                <div class="icones-reagir">
-                    <div>
-                        <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        <ion-icon name="chatbubble-outline" class="icone"></ion-icon>
-                        <ion-icon name="paper-plane-outline" class="icone"></ion-icon>
-                    </div>
-                    <div>
-                        <ion-icon name="bookmark-outline" class="icone margin-direita"></ion-icon>
-                    </div>
-                </div>
-                <div class="curtidas">
-                    <img src="images/perfil-gato-3.jpg" alt="" />
-                        <p>Curtido por <strong>Moka</strong> e <strong>outras 60.878 pessoas</strong></p>
-                </div>
-                <div class="comentarios">
-                    <div class="lengenda">
-                        <p><strong>Malu</strong> Lorem ipsum dolor sit</p>
-                    </div>
-                    <div class="quant-comentarios">
-                        <p><a href="#">Ver todos os 29.520 comentários</a></p>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Marnie</strong> Nulla at nisi diam</p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Moka</strong> Fusce eu elementum purus.</p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="comentario">
-                        <p><strong>Britney</strong> Cras condimentum risus mollis, dignissim felis vel, posuere tortor. Aenean bibendum... <a href="#">mais</a> </p>
-                        <div>
-                            <ion-icon name="heart-outline" class="icone"></ion-icon>
-                        </div>
-                    </div>
-                    <div class="hora-publicacao">
-                        <p>HÁ 1 DIA</p>
-                    </div>
-                    <div class="adicionar-comentario">
-                        <div>
-                            <ion-icon name="happy-outline" class="icone"></ion-icon>
-                        </div>
-                        <input type="text" name="comentario" id="comentario" placeholder="Adicione um comentário..." />
-                            <button>Publicar</button>
-                    </div>
-                </div>
-            </div>
+            {feed.map(publicacao => <Post sourceImgPerfil={publicacao.sourceImgPerfil} titlePerfil={publicacao.titlePerfil} sourceImgPublicada={publicacao.sourceImgPublicada} sourceImgPerfilQCurtiu={publicacao.sourceImgPerfilQCurtiu} titlePerfilQCurtiu={publicacao.titlePerfilQCurtiu} quantCurtidas={publicacao.quantCurtidas} legenda={publicacao.legenda} quantComentarios={publicacao.quantComentarios} titlePerfilComentou1={publicacao.titlePerfilComentou1} comentario1={publicacao.comentario1} titlePerfilComentou2={publicacao.titlePerfilComentou2} comentario2={publicacao.comentario2} dataPublicacao={publicacao.dataPublicacao}/>)}
         </div>
     )
 }

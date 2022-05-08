@@ -1,80 +1,75 @@
-export default function SideBar(){
+function Sugestao(props) {
     return (
-        <div class="sidebar">
-            <div class="meu-perfil">
-                <img src="images/perfil-dog-5.jpg" alt="" />
+        <div class="sugestao">
+            <div class="perfil">
+                <img src={props.sourceImgPerfil} alt="" />
                 <div>
-                    <h5><strong>kateviegas</strong></h5>
-                    <h5>Kate Viegas</h5>
+                    <h3>{props.nomePerfil}</h3>
+                    <p>Novo no Instagram</p>
                 </div>
             </div>
-            
+            <div>
+                <h6>Seguir</h6>
+            </div>
+        </div>
+    )
+}
+
+function Usuario(props) {
+    return (
+        <div class="meu-perfil">
+            <img src="images/perfil-dog-5.jpg" alt="" />
+            <div>
+                <h5><strong>{props.user}</strong></h5>
+                <h5>{props.nome}</h5>
+            </div>
+        </div>
+    )
+}
+
+export default function SideBar() {
+
+    const usuario = [
+        {
+            user: "kateviegas",
+            nome: "Kate Viegas"
+        }
+    ]
+
+    const sugestoes = [
+        {
+            sourceImgPerfil: "images/perfil-dog-6.jpg",
+            nomePerfil: "Santos Dumont"
+        },
+        {
+            sourceImgPerfil: "images/perfil-gato-5.jpg",
+            nomePerfil: "Agostinho Carrara"
+        },
+        {
+            sourceImgPerfil: "images/perfil-rato-1.webp",
+            nomePerfil: "Neymar Jr"
+        },
+        {
+            sourceImgPerfil: "images/perfil-dog-7.jpg",
+            nomePerfil: "Lady Kate"
+        },
+        {
+            sourceImgPerfil: "images/perfil-gato-6.jpg",
+            nomePerfil: "Teresa Cristina"
+        }
+    ]
+
+    return (
+        <div class="sidebar">
+            {usuario.map(usuario => <Usuario user={usuario.user} nome={usuario.nome}/>)}
+
             <div class="sugestoes">
                 <div class="titulo-sugestao">
                     <p>Sugestões para você</p>
                     <h3>Ver tudo</h3>
                 </div>
 
-                <div class="sugestao">
-                    <div class="perfil">
-                        <img src="images/perfil-dog-6.jpg" alt="" />
-                        <div>
-                            <h3>Santos Dumont</h3>
-                            <p>Novo no Instagram</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h6>Seguir</h6>
-                    </div>
-                </div>
-                <div class="sugestao">
-                    <div class="perfil">
-                        <img src="images/perfil-gato-5.jpg" alt="" />
-                        <div>
-                            <h3>Agostinho Carrara</h3>
-                            <p>Novo no Instagram</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h6>Seguir</h6>
-                    </div>
-                </div>
-                <div class="sugestao">
-                    <div class="perfil">
-                        <img src="images/perfil-rato-1.webp" alt="" />
-                        <div>
-                            <h3>Neymar Jr</h3>
-                            <p>Novo no Instagram</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h6>Seguir</h6>
-                    </div>
-                </div>
-                <div class="sugestao">
-                    <div class="perfil">
-                        <img src="images/perfil-dog-7.jpg" alt="" />
-                        <div>
-                            <h3>Lady Kate</h3>
-                            <p>Novo no Instagram</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h6>Seguir</h6>
-                    </div>
-                </div>
-                <div class="sugestao">
-                    <div class="perfil">
-                        <img src="images/perfil-gato-6.jpg" alt="" />
-                        <div>
-                            <h3>Teresa Cristina</h3>
-                            <p>Novo no Instagram</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h6>Seguir</h6>
-                    </div>
-                </div>
+                {sugestoes.map(sugestao => <Sugestao sourceImgPerfil={sugestao.sourceImgPerfil} nomePerfil={sugestao.nomePerfil} />)}
 
                 <div class="links-uteis">
                     <p>Sobre • Ajuda • Imprensa • API • Carreiras • Privacidade • Termos • Localizações • Contas mais relevantes • Hashtags • Idioma</p>

@@ -292,8 +292,7 @@ div.adicionar-comentario button{
 
 div.adicionar-comentario button:hover{
     transition: 300ms;
-    color: #0095F6;
-    
+    color: #0095F6;  
 }
 
 /* Estilos para o sidebar */
@@ -382,7 +381,13 @@ div.perfil p{
 div.sugestao h6{
     font-size: 12px;
     font-weight: 500;
-    color: #139EF2;
+    color: #B2DFFC;
+    cursor: pointer;
+}
+
+div.sugestao h6:hover{
+    transition: 300ms;
+    color: #0095F6; 
 }
 
 div.links-uteis{
