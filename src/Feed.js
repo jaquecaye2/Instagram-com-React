@@ -1,4 +1,25 @@
+import React from "react"
+
 function Post(props) {
+    const [tipoCoracao, setTipoCoracao] = React.useState("heart-outline");
+    const [corCoracao, setCorCoracao] = React.useState("black")
+
+    function curtirPublicacao(){
+        if (tipoCoracao === "heart-outline"){
+            setTipoCoracao("heart")
+            setCorCoracao("danger")
+        }
+        if (tipoCoracao === "heart"){
+            setTipoCoracao("heart-outline")
+            setCorCoracao("black")
+        }
+    }
+
+    function curtirPublicacaoFoto(){
+        setTipoCoracao("heart")
+        setCorCoracao("danger")
+    }
+
     return (
         <div class="post">
             <div class="barra-superior">
@@ -10,12 +31,12 @@ function Post(props) {
                     <ion-icon name="ellipsis-horizontal"></ion-icon>
                 </div>
             </div>
-            <div class="foto">
+            <div class="foto" onClick={curtirPublicacaoFoto}>
                 <img src={props.sourceImgPublicada} alt="" />
             </div>
             <div class="icones-reagir">
                 <div>
-                    <ion-icon name="heart-outline" class="icone"></ion-icon>
+                    <ion-icon name={tipoCoracao} color={corCoracao} class="icone" onClick={curtirPublicacao}></ion-icon>
                     <ion-icon name="chatbubble-outline" class="icone"></ion-icon>
                     <ion-icon name="paper-plane-outline" class="icone"></ion-icon>
                 </div>
